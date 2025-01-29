@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('title');
             $table->text('author');
 
+
             $table->timestamps();
         });
     }
