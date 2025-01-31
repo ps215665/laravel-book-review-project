@@ -8,7 +8,6 @@
 </head>
 <body class="bg-gray-100 p-6">
 <div class="max-w-3xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4 text-gray-800">Book List</h1>
     @yield('content')
 </div>
 </body>

@@ -1,14 +1,16 @@
 @extends('layout.app')
 
 @section('content')
+    <h1 class="text-2xl font-bold mb-4 text-gray-800">Book List</h1>
+
     <!-- Search Bar -->
     <form method="GET" action="{{ route('books.index') }}" class="mb-4 flex space-x-2">
-        <input type="text" name="filter" placeholder="Search by title..." class="w-full p-2 border rounded-lg shadow-sm" value="{{ request('title') }}">
+        <input type="text" name="title" placeholder="Search by title..." class="w-full p-2 border rounded-lg shadow-sm" value="{{ request('title') }}">
         <input type="hidden" name="filter" value="{{ request('filter') }}" />
         <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600">Search</button>
         <a href="{{ route('books.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600">Clear</a>
     </form>
-    <div class="filter-container mb-4 flex">
+    <div class="filter-container mb-4 flex bg-blue-100">
         @php
             $filters = [
                 '' => 'Latest',
@@ -21,7 +23,7 @@
 
         @foreach ($filters as $key => $label)
             <a href="{{ route('books.index', [...request()->query(), 'filter' => $key]) }}"
-               class="{{ request('filter') === $key || (request('filter') === null && $key === '') ? 'filter-item-active' : 'filter-item' }}">
+               class="{{ request('filter') === $key || (request('filter') === null && $key === '') ? 'filter-item-active' : 'filter-item' }} p-4 hover:bg-blue-500 hover:text-white ">
                 {{ $label }}
             </a>
         @endforeach
